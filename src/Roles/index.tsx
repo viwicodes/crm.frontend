@@ -1,8 +1,8 @@
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import Toolbar from '@mui/material/Toolbar';
-import NavBar from '../components/appbar';
-import SideDrawer from '../components/drawer';
+import NavBar from '../components/commons/appbar';
+import SideDrawer from '../components/commons/drawer';
 
 export default function Roles() {
     return (
