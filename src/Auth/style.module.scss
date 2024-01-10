@@ -1,0 +1,33 @@
+.main {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgb(105, 133, 192);
+  background: linear-gradient(
+    90deg,
+    rgba(105, 133, 192, 1) 0%,
+    rgba(31, 184, 200, 1) 100%
+  );
+
+  .formBox {
+    height: 80%;
+
+    display: flex;
+    justify-content: space-between;
+    border-radius: 2%;
+
+    background-color: white;
+
+    .welcomeText {
+      color: #8f3cce;
+      font-weight: bolder;
+      padding: 30px;
+
+      font-family: "General";
+    }
+  }
+}
