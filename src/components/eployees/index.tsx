@@ -6,7 +6,7 @@ import { StickyHeadTable } from "../../components/Table";
 import { Column, EmployeesData } from "../../components/Table/types";
 import { Button, Grid, Modal, TextField } from "@mui/material";
 import React, { useState, useEffect } from "react";
-import Form from "./initform";
+import Form from "./newForm";
 import useToken from "../../Auth/useToken";
 // import InboxIcon from '@mui/icons-material/MoveToInbox';
 // import MailIcon from '@mui/icons-material/Mail';
@@ -14,12 +14,12 @@ import useToken from "../../Auth/useToken";
 const bearerToken =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwidXNlcm5hbWUiOiJ2aXNobnUiLCJpYXQiOjE3MDQ4Mzc2ODEsImV4cCI6MTcwNDkyNDA4MX0.CDrjDE9SNMOVPe_nDGqfLGxVpuaNOvMz4Ms7Bk69rN8";
 
-
-export const Employees: React.FC<{ data: EmployeesData[] }> = ({ data }): JSX.Element => {
+export const Employees: React.FC<{ data: EmployeesData[] }> = ({
+  data,
+}): JSX.Element => {
   const [open, setOpen] = React.useState(false);
   // const [data, setData] = useState<EmployeesData[]>([]);
-  const { getToken } = useToken()
-
+  const { getToken } = useToken();
 
   const handleOpen = () => {
     setOpen(true);
@@ -31,11 +31,6 @@ export const Employees: React.FC<{ data: EmployeesData[] }> = ({ data }): JSX.El
   const headers: Column[] = [
     { id: "name", label: "Emp Name", minWidth: 110 },
     { id: "position", label: "Position", minWidth: 100 },
-    // {
-    //   id: "role",
-    //   label: "Role",
-    //   minWidth: 100,
-    // },
     {
       id: "dob",
       label: "DOB",
@@ -138,4 +133,4 @@ export const Employees: React.FC<{ data: EmployeesData[] }> = ({ data }): JSX.El
       </Modal>
     </Box>
   );
-}
+};

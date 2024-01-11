@@ -3,7 +3,6 @@ import { useState } from "react";
 import useToken from "../../Auth/useToken";
 import { useNavigate } from "react-router-dom";
 
-
 type AddEmployeeData = {
   name: string;
   position: number;
@@ -13,9 +12,9 @@ type AddEmployeeData = {
   total_exp: number;
   phone: string;
   email: string;
-}
+};
 export default function Form() {
-  const { getToken } = useToken()
+  const { getToken } = useToken();
   const style = {
     position: "absolute" as "absolute",
     top: "50%",
@@ -29,16 +28,16 @@ export default function Form() {
     p: 4,
   };
   const [formData, setFormData] = useState<AddEmployeeData>({
-    name: '',
+    name: "",
     position: 1,
     role: 1,
     department: 1,
     // dob: 22-12-2023,
     total_exp: 0,
-    phone: '',
-    email: '',
+    phone: "",
+    email: "",
   });
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const fetchData = (formData: AddEmployeeData) => {
     // Replace 'yourBearerToken' with your actual bearer token
 
@@ -49,7 +48,7 @@ export default function Form() {
         "Content-Type": "application/json",
         // Add any other headers as needed
       },
-      body: JSON.stringify(formData)
+      body: JSON.stringify(formData),
     })
       .then((response) => {
         // Check if the request was successful (status code 2xx)
@@ -62,12 +61,12 @@ export default function Form() {
       })
       .then((result) => {
         // Set the data in the state
-        navigate('/')
-        alert('employee added')
+        navigate("/");
+        alert("employee added");
       })
       .catch((error) => {
         // Handle errors
-        alert(error.message)
+        alert(error.message);
       })
       .finally(() => {
         // Set loading to false when the API call is complete
@@ -75,7 +74,7 @@ export default function Form() {
   };
 
   // Handle form field changes
-  const handleChange = (e: { target: { name: any; value: any; }; }) => {
+  const handleChange = (e: { target: { name: any; value: any } }) => {
     const { name, value } = e.target;
     setFormData((prevData: any) => ({
       ...prevData,
@@ -83,11 +82,11 @@ export default function Form() {
     }));
   };
 
-  const handleSubmit = async (e: { preventDefault: () => void; }) => {
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     await fetchData(formData);
     // Add your logic here to handle form submission, for example, send data to the server
-    console.log('Form submitted:', formData);
+    console.log("Form submitted:", formData);
   };
   return (
     <>
@@ -102,27 +101,69 @@ export default function Form() {
           Create Employee
         </Typography>
 
-        <Box
-        // sx={{
-        //   display: "flex",
-        //   flex: "row",
-        //   alignItems: "center",
-        //   justifyContent: "space-between",
-        //   width: "80%",
-        //   padding: "30px",
-        // }}
-        >
-          <TextField id="outlined-basic" label="Name" variant="outlined" name="name" value={formData.name} onChange={handleChange} />
-          <TextField id="outlined-basic" label="Position" variant="outlined" name="position" value={formData.position} onChange={handleChange} />
-          <TextField id="outlined-basic" label="Role" variant="outlined" name="role" value={formData.role} onChange={handleChange} />
-          <TextField id="outlined-basic" label="Department" variant="outlined" name="department" value={formData.department} onChange={handleChange} />
+        <Box>
+          <TextField
+            id="outlined-basic"
+            label="Name"
+            variant="outlined"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+          />
+          <TextField
+            id="outlined-basic"
+            label="Position"
+            variant="outlined"
+            name="position"
+            value={formData.position}
+            onChange={handleChange}
+          />
+          <TextField
+            id="outlined-basic"
+            label="Role"
+            variant="outlined"
+            name="role"
+            value={formData.role}
+            onChange={handleChange}
+          />
+          <TextField
+            id="outlined-basic"
+            label="Department"
+            variant="outlined"
+            name="department"
+            value={formData.department}
+            onChange={handleChange}
+          />
           {/* <TextField id="outlined-basic" label="Dob" variant="outlined" name="dob" value={formData.dob} onChange={handleChange} /> */}
           {/* <TextField id="outlined-basic" label="Doj" variant="outlined" name="doj" value={formData.doj} onChange={handleChange} /> */}
-          <TextField id="outlined-basic" label="Total Experience" variant="outlined" name="total_exp" value={formData.total_exp} onChange={handleChange} />
-          <TextField id="outlined-basic" label="Phone" variant="outlined" name="phone" value={formData.phone} onChange={handleChange} />
-          <TextField id="outlined-basic" label="Email" variant="outlined" name="email" value={formData.email} onChange={handleChange} />
+          <TextField
+            id="outlined-basic"
+            label="Total Experience"
+            variant="outlined"
+            name="total_exp"
+            value={formData.total_exp}
+            onChange={handleChange}
+          />
+          <TextField
+            id="outlined-basic"
+            label="Phone"
+            variant="outlined"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+          />
+          <TextField
+            id="outlined-basic"
+            label="Email"
+            variant="outlined"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+          />
         </Box>
-        <Button variant="contained" onClick={handleSubmit}>Submit</Button>
+        <Button variant="contained" onClick={handleSubmit}>
+          Submit
+        </Button>
       </Box>
     </>
   );

@@ -14,12 +14,14 @@ import { useState, useEffect } from "react";
 
 import styles from "./style.module.scss";
 
-const LoginPage: React.FC<{ setToken: React.Dispatch<any> }> = ({ setToken }) => {
+const LoginPage: React.FC<{ setToken: React.Dispatch<any> }> = ({
+  setToken,
+}) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const fetchData = () => {
-
+    console.log("fetching");
     fetch("http://localhost:4000/api/auth/login", {
       credentials: "same-origin",
 
@@ -33,6 +35,7 @@ const LoginPage: React.FC<{ setToken: React.Dispatch<any> }> = ({ setToken }) =>
       }),
     })
       .then((response) => {
+        console.log(response);
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -40,15 +43,14 @@ const LoginPage: React.FC<{ setToken: React.Dispatch<any> }> = ({ setToken }) =>
       })
       .then((result) => {
         console.log(result, "cook");
-        setToken(result)
+        setToken(result);
       })
-      .catch((error) => {
-      })
-      .finally(() => {
-      });
+      .catch((error) => {})
+      .finally(() => {});
   };
 
-  const onClick = () => {
+  const onClick = (e: any) => {
+    e.preventDefault();
     fetchData();
   };
 
@@ -127,7 +129,7 @@ const LoginPage: React.FC<{ setToken: React.Dispatch<any> }> = ({ setToken }) =>
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-              onClick={onClick}
+              onClick={(e) => onClick(e)}
             >
               Sign In
             </Button>
