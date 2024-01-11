@@ -14,7 +14,9 @@ import Toolbar from "@mui/material/Toolbar";
 import NavBar from "../components/commons/appbar";
 import SideNav from "../components/commons/drawer";
 import Content from "../components/dashboard";
-import Employees from "../components/eployees";
+import { Employees } from "../components/eployees";
+import useToken from "../Auth/useToken";
+import { EmployeesData } from "../components/Table/types";
 
 const drawerWidth = 240;
 
@@ -30,6 +32,53 @@ export default function DashBoard(props: Props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [isClosing, setIsClosing] = React.useState(false);
+  const [data, setData] = React.useState<EmployeesData[]>([]);
+  const { getToken } = useToken()
+  
+  React.useEffect(() => {
+    // const fetchData = () => {
+    // Replace 'yourBearerToken' with your actual bearer token
+
+    fetch("http://localhost:4000/api/employees?page=1", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${getToken()}`,
+        "Content-Type": "application/json",
+        // Add any other headers as needed
+      },
+    })
+      .then((response) => {
+        // Check if the request was successful (status code 2xx)
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        // Parse the response JSON
+        return response.json();
+      })
+      .then((result) => {
+        const mutated_result = result.data.map((item: any) => {
+          return {
+            ...item,
+            position: item.position.name,
+            role: item.role.name,
+            department: item.department.name,
+          };
+        });
+        // Set the data in the state
+        setData(mutated_result);
+      })
+      .catch((error) => {
+        // Handle errors
+      })
+      .finally(() => {
+        // Set loading to false when the API call is complete
+      });
+    // };
+
+    // Call the fetchData function when the component mounts
+    // fetchData();
+  }, []);
 
   const handleDrawerClose = () => {
     setIsClosing(true);
@@ -117,7 +166,7 @@ export default function DashBoard(props: Props) {
         }}
       >
         <Toolbar />
-        <Employees />
+        <Employees data={data} />
       </Box>
     </Box>
   );

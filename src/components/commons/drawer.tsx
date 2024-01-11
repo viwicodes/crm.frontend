@@ -64,7 +64,7 @@ export default function SideNav() {
           { text: "Time Entry", path: "/time" },
           { text: "Roles", path: "/roles" },
         ].map((text, index) => (
-          <Link to={text.path} style={linkStyles}>
+          <Link key={index} to={text.path} style={linkStyles}>
             <ListItem key={text.text}>
               <ListItemButton selected={location.pathname == text.path}>
                 <ListItemIcon>
