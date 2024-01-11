@@ -104,37 +104,26 @@ export default function Form() {
         >
           <Box
             sx={{
-              width: "50%",
+              width: "100%",
               padding: "20px",
             }}
           >
+            <Typography
+              sx={{
+                paddingY: "10px",
+              }}
+            >
+              Name
+            </Typography>
             <TextField
               sx={{
                 width: "100%",
               }}
               id="outlined-basic"
               variant="outlined"
-              label="Name"
+              label="Of the employee"
               name="name"
               value={formData.name}
-              onChange={handleChange}
-            />
-          </Box>
-          <Box
-            sx={{
-              width: "50%",
-              padding: "20px",
-            }}
-          >
-            <TextField
-              sx={{
-                width: "100%",
-              }}
-              id="outlined-basic"
-              variant="outlined"
-              label="Position"
-              name="position"
-              value={formData.position}
               onChange={handleChange}
             />
           </Box>
@@ -154,15 +143,22 @@ export default function Form() {
               padding: "20px",
             }}
           >
+            <Typography
+              sx={{
+                paddingY: "10px",
+              }}
+            >
+              Position
+            </Typography>
             <TextField
               sx={{
                 width: "100%",
               }}
               id="outlined-basic"
               variant="outlined"
-              label="Role"
-              name="role"
-              value={formData.role}
+              label="Of the employee"
+              name="position"
+              value={formData.position}
               onChange={handleChange}
             />
           </Box>
@@ -172,13 +168,46 @@ export default function Form() {
               padding: "20px",
             }}
           >
+            <Typography
+              sx={{
+                paddingY: "10px",
+              }}
+            >
+              Role
+            </Typography>
             <TextField
               sx={{
                 width: "100%",
               }}
               id="outlined-basic"
               variant="outlined"
-              label="Department"
+              label="Of the employee"
+              name="role"
+              value={formData.role}
+              onChange={handleChange}
+            />
+          </Box>
+
+          <Box
+            sx={{
+              width: "50%",
+              padding: "20px",
+            }}
+          >
+            <Typography
+              sx={{
+                paddingY: "10px",
+              }}
+            >
+              Department
+            </Typography>
+            <TextField
+              sx={{
+                width: "100%",
+              }}
+              id="outlined-basic"
+              variant="outlined"
+              label="Of the employee"
               name="department"
               value={formData.department}
               onChange={handleChange}
@@ -200,13 +229,20 @@ export default function Form() {
               padding: "20px",
             }}
           >
+            <Typography
+              sx={{
+                paddingY: "10px",
+              }}
+            >
+              Experience
+            </Typography>
             <TextField
               sx={{
                 width: "100%",
               }}
               id="outlined-basic"
               variant="outlined"
-              label="Total"
+              label="Of the employee"
               name="total_exp"
               value={formData.total_exp}
               onChange={handleChange}
@@ -218,13 +254,45 @@ export default function Form() {
               padding: "20px",
             }}
           >
+            <Typography
+              sx={{
+                paddingY: "10px",
+              }}
+            >
+              Phone
+            </Typography>
             <TextField
               sx={{
                 width: "100%",
               }}
               id="outlined-basic"
               variant="outlined"
-              label="Email"
+              label="Of the employee"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+            />
+          </Box>
+          <Box
+            sx={{
+              width: "50%",
+              padding: "20px",
+            }}
+          >
+            <Typography
+              sx={{
+                paddingY: "10px",
+              }}
+            >
+              Email
+            </Typography>
+            <TextField
+              sx={{
+                width: "100%",
+              }}
+              id="outlined-basic"
+              variant="outlined"
+              label="Of the employee"
               name="email"
               value={formData.email}
               onChange={handleChange}

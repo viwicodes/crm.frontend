@@ -7,3 +7,7 @@
   font-family: "General";
   src: url(../public/assets/fonts/GeneralSans.ttf);
 }
+
+h1, h2, h3 {
+  font-family: "General";
+}

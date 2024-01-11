@@ -24,8 +24,8 @@ export default function DashBoard(props: Props) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [isClosing, setIsClosing] = React.useState(false);
   const [data, setData] = React.useState<EmployeesData[]>([]);
-  const { getToken } = useToken()
-  
+  const { getToken } = useToken();
+
   React.useEffect(() => {
     // const fetchData = () => {
     // Replace 'yourBearerToken' with your actual bearer token
@@ -58,6 +58,7 @@ export default function DashBoard(props: Props) {
         });
         // Set the data in the state
         setData(mutated_result);
+        console.log(data);
       })
       .catch((error) => {
         // Handle errors
@@ -85,8 +86,6 @@ export default function DashBoard(props: Props) {
       setMobileOpen(!mobileOpen);
     }
   };
-
-  
 
   // Remove this const when copying and pasting into your project.
   const container =
