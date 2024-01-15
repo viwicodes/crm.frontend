@@ -12,6 +12,8 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { useState, useEffect } from "react";
 
+import { ToastContainer, toast } from "react-toastify";
+
 import styles from "./style.module.scss";
 
 const LoginPage: React.FC<{ setToken: React.Dispatch<any> }> = ({
@@ -20,9 +22,11 @@ const LoginPage: React.FC<{ setToken: React.Dispatch<any> }> = ({
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  const notify = () => toast("Wow so easy !");
+
   const fetchData = () => {
     console.log("fetching");
-    fetch("http://localhost:4000/api/auth/login", {
+    fetch("http://3.6.39.179:4000/api/auth/login", {
       credentials: "same-origin",
 
       method: "POST",
@@ -45,7 +49,9 @@ const LoginPage: React.FC<{ setToken: React.Dispatch<any> }> = ({
         console.log(result, "cook");
         setToken(result);
       })
-      .catch((error) => {})
+      .catch((error) => {
+        toast.error("something occured");
+      })
       .finally(() => {});
   };
 
@@ -67,6 +73,20 @@ const LoginPage: React.FC<{ setToken: React.Dispatch<any> }> = ({
 
   return (
     <div className={styles.main}>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+      {/* Same as */}
+      <ToastContainer />
       <Container
         id="main-container"
         component="main"

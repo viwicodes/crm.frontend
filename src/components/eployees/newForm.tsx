@@ -43,7 +43,7 @@ export default function Form() {
   const fetchData = (formData: AddEmployeeData) => {
     // Replace 'yourBearerToken' with your actual bearer token
 
-    fetch("http://localhost:4000/api/employees", {
+    fetch("http://3.6.39.179:4000/api/employees", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${getToken()}`,
