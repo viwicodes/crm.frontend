@@ -27,7 +27,7 @@ const LoginPage: React.FC<{ setToken: React.Dispatch<any> }> = ({
 
   const fetchData = () => {
     console.log("fetching");
-    fetch("http://localhost:4000/api/auth/login", {
+    fetch("http://13.127.145.250:4000/api/auth/login", {
       credentials: "same-origin",
 
       method: "POST",

@@ -33,7 +33,7 @@ export default function DashBoard(props: Props) {
     // const fetchData = () => {
     // Replace 'yourBearerToken' with your actual bearer token
 
-    fetch("http://localhost:4000/api/employees?page=1", {
+    fetch("http://13.127.145.250:4000/api/employees?page=1", {
       method: "GET",
       headers: {
         Authorization: `Bearer ${getToken()}`,
