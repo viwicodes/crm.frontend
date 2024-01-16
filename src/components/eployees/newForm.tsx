@@ -3,11 +3,14 @@ import { useState } from "react";
 import useToken from "../../Auth/useToken";
 import { useNavigate } from "react-router-dom";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 type AddEmployeeData = {
   name: string;
-  position: number;
-  role: number;
-  department: number;
+  position: string;
+  role: string;
+  department: string;
   // dob: Date;
   total_exp: number;
   phone: string;
@@ -32,9 +35,9 @@ export default function Form() {
   };
   const [formData, setFormData] = useState<AddEmployeeData>({
     name: "",
-    position: 1,
-    role: 1,
-    department: 1,
+    position: "7c0ba45f-c764-4614-9cd8-58c053dc55f8",
+    role: "03cd6123-6f90-4789-a181-a4b03313cc78",
+    department: "b63fe8a9-3321-4e51-b8dc-1c0c80252c9c",
     total_exp: 0,
     phone: "",
     email: "",
@@ -43,7 +46,7 @@ export default function Form() {
   const fetchData = (formData: AddEmployeeData) => {
     // Replace 'yourBearerToken' with your actual bearer token
 
-    fetch("//13.234.34.212:4000/api/employees", {
+    fetch("http://localhost:4000/api/employees", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${getToken()}`,
@@ -64,11 +67,12 @@ export default function Form() {
       .then((result) => {
         // Set the data in the state
         navigate("/");
-        alert("employee added");
       })
       .catch((error) => {
         // Handle errors
-        alert(error.message);
+        // alert(error.message);
+        // navigate("/");
+        toast.error("Bad request");
       })
       .finally(() => {
         // Set loading to false when the API call is complete
@@ -93,6 +97,20 @@ export default function Form() {
   return (
     <>
       <Box sx={style}>
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
+        {/* Same as */}
+        <ToastContainer />
         {/* Todo : Add form here */}
         <Box
           sx={{

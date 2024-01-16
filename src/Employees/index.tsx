@@ -9,6 +9,9 @@ import { Employees } from "../components/eployees";
 import useToken from "../Auth/useToken";
 import { EmployeesData } from "../components/Table/types";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const drawerWidth = 240;
 
 interface Props {
@@ -30,7 +33,7 @@ export default function DashBoard(props: Props) {
     // const fetchData = () => {
     // Replace 'yourBearerToken' with your actual bearer token
 
-    fetch("//13.234.34.212:4000/api/employees?page=1", {
+    fetch("http://localhost:4000/api/employees?page=1", {
       method: "GET",
       headers: {
         Authorization: `Bearer ${getToken()}`,
@@ -45,6 +48,7 @@ export default function DashBoard(props: Props) {
         }
 
         // Parse the response JSON
+        toast.success("Fetched Employee Data");
         return response.json();
       })
       .then((result) => {
@@ -93,6 +97,20 @@ export default function DashBoard(props: Props) {
 
   return (
     <Box sx={{ display: "flex" }}>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+      {/* Same as */}
+      <ToastContainer />
       <CssBaseline />
       <AppBar
         position="fixed"

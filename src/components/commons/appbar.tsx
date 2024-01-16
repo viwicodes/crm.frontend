@@ -14,6 +14,9 @@ import MailIcon from "@mui/icons-material/Mail";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import styles from "./appbar.module.scss";
 import { Navigate, redirect, useNavigate } from "react-router-dom";
 import { url } from "inspector";
@@ -84,9 +87,10 @@ export default function NavBar() {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('user')
-    navigate('/login')
-  }
+    localStorage.removeItem("user");
+    toast.success("Logged out.");
+    navigate("/login");
+  };
 
   const menuId = "primary-search-account-menu";
   const renderMenu = (
@@ -164,7 +168,25 @@ export default function NavBar() {
 
   return (
     <Box className={styles.main}>
-      <AppBar position="static" sx={{ backgroundColor: "#316FFF", border: "none" }} elevation={0}>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+      {/* Same as */}
+      <ToastContainer />
+      <AppBar
+        position="static"
+        sx={{ backgroundColor: "#316FFF", border: "none" }}
+        elevation={0}
+      >
         <Toolbar>
           <Search>
             <SearchIconWrapper>

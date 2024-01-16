@@ -11,9 +11,6 @@ import useToken from "../../Auth/useToken";
 // import InboxIcon from '@mui/icons-material/MoveToInbox';
 // import MailIcon from '@mui/icons-material/Mail';
 
-const bearerToken =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwidXNlcm5hbWUiOiJ2aXNobnUiLCJpYXQiOjE3MDQ4Mzc2ODEsImV4cCI6MTcwNDkyNDA4MX0.CDrjDE9SNMOVPe_nDGqfLGxVpuaNOvMz4Ms7Bk69rN8";
-
 export const Employees: React.FC<{ data: EmployeesData[] }> = ({
   data,
 }): JSX.Element => {

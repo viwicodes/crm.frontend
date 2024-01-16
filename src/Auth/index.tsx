@@ -13,6 +13,7 @@ import Container from "@mui/material/Container";
 import { useState, useEffect } from "react";
 
 import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import styles from "./style.module.scss";
 
@@ -26,7 +27,7 @@ const LoginPage: React.FC<{ setToken: React.Dispatch<any> }> = ({
 
   const fetchData = () => {
     console.log("fetching");
-    fetch("//13.234.34.212:4000/api/auth/login", {
+    fetch("http://localhost:4000/api/auth/login", {
       credentials: "same-origin",
 
       method: "POST",
@@ -43,6 +44,7 @@ const LoginPage: React.FC<{ setToken: React.Dispatch<any> }> = ({
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
+        toast.success("Successfully logged in.");
         return response.json();
       })
       .then((result) => {
@@ -50,7 +52,8 @@ const LoginPage: React.FC<{ setToken: React.Dispatch<any> }> = ({
         setToken(result);
       })
       .catch((error) => {
-        toast.error("something occured");
+        console.log(error);
+        toast.error("Incorrect credentials");
       })
       .finally(() => {});
   };
